@@ -85,7 +85,7 @@ static int grl_irq_handler_fn(void *unused)
 //Interrupt handler for IRQ 11
 static irqreturn_t irq_handler(int irq, void *dev_id)
 {
-	int err_stat, lgpioval = 0;
+	int lgpioval = 0;
 
 	lgpioval = gpio_get_value(JETSON_POWER_OFF_GPIO);
 	pr_info(DRIVER_NAME " lgpioval= %d\n", lgpioval);
@@ -171,7 +171,7 @@ static int __init grl_pwr_ctrl_init(void)
 	}
 
 	/*Creating struct class*/
-	dev_class = class_create(THIS_MODULE, "grl_class")
+	dev_class = class_create(THIS_MODULE, "grl_class");
 	if (dev_class == NULL) {
 		pr_err(DRIVER_NAME " Cannot create the struct class\n");
 		goto r_class;
